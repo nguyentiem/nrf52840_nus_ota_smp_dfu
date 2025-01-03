@@ -1,0 +1,9 @@
+# editors
+*.swp
+*~
+
+# build
+/build*/
+CMakeCache.txt
+settings.json
+cmake.check_cache
