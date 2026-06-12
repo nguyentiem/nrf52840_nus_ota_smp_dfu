@@ -21,7 +21,7 @@
 
 #define GDO_NAME 6
 
-const uint32_t kAdvertisingOptions = BT_LE_ADV_OPT_CONNECTABLE;
+const uint32_t kAdvertisingOptions = BT_LE_ADV_OPT_CONN;
 const uint8_t kAdvertisingFlags = BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR;
 const uint8_t kBTUuid[] = {BT_UUID_NUS_VAL};
 const uint16_t kAdvertisingIntervalMin = 100;
@@ -146,13 +146,6 @@ void startNUS()
 		printk("<BLE> BLE init fail, error code: %d\n", ret);
 		return;
 	}
-
-#if defined(CONFIG_BT_FIXED_PASSKEY)
-	if (bt_passkey_set(123456) != 0)
-	{
-		printk("error to set key\n");
-	}
-#endif
 
 	struct bt_le_adv_param params = BT_LE_ADV_PARAM_INIT(kAdvertisingOptions, kAdvertisingIntervalMin, kAdvertisingIntervalMax, NULL);
 	// params.id = sBtId;
